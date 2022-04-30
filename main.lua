@@ -93,32 +93,45 @@ function System.Notify(Text, Duration)
     }
     local clonedNotification = Notification:Clone()
 
-    clonedNotification.NotificationText.Text = Text
     clonedNotification.Parent = NotificationFrame
 
-    local Tween = TweenService:Create(clonedNotification, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {BackgroundTransparency = 0})
-    Tween:Play()
-
-    for _, v in pairs(clonedNotification:GetDescendants()) do
-        for i, data in pairs(transparencyData) do
-            if i == v.Name then
-                local Tween = TweenService:Create(v, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {[data] = 0})
-                Tween:Play()
-            end
-        end
-    end
-
-    task.delay(Duration, function()
-        local Tween = TweenService:Create(clonedNotification, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {BackgroundTransparency = 1})
+    spawn(function()
+        local Tween = TweenService:Create(clonedNotification, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {BackgroundTransparency = 0})
         Tween:Play()
-    
+
         for _, v in pairs(clonedNotification:GetDescendants()) do
             for i, data in pairs(transparencyData) do
                 if i == v.Name then
-                    local Tween = TweenService:Create(v, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {[data] = 1})
+                    local Tween = TweenService:Create(v, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {[data] = 0})
                     Tween:Play()
                 end
             end
+        end
+    end)
+
+    for i = 1, #Text do
+        clonedNotification.NotificationText.Text = string.sub(Text, 1, i)
+        game:GetService("RunService").Stepped:wait()
+    end
+
+    task.delay(Duration, function()
+        spawn(function()
+            local Tween = TweenService:Create(clonedNotification, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {BackgroundTransparency = 1})
+            Tween:Play()
+        
+            for _, v in pairs(clonedNotification:GetDescendants()) do
+                for i, data in pairs(transparencyData) do
+                    if i == v.Name then
+                        local Tween = TweenService:Create(v, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {[data] = 1})
+                        Tween:Play()
+                    end
+                end
+            end
+        end)
+
+        for i = #Text, 0, -1 do
+            clonedNotification.NotificationText.Text = string.sub(Text, 1, i)
+            game:GetService("RunService").Stepped:wait()
         end
 
         Debris:AddItem(clonedNotification, .5)
