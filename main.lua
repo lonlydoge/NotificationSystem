@@ -1,3 +1,6 @@
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
+
 if game.CoreGui:FindFirstChild("NotificationUI") then
     game.CoreGui:FindFirstChild("NotificationUI"):Destroy()
 end
@@ -92,9 +95,10 @@ function System.Notify(Text, Duration)
         ["InfoImage"] = "ImageTransparency";
     }
     local clonedNotification = Notification:Clone()
+    
 
     clonedNotification.Parent = NotificationFrame
-
+    
     spawn(function()
         local Tween = TweenService:Create(clonedNotification, TweenInfo.new(.5, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {BackgroundTransparency = 0})
         Tween:Play()
@@ -137,3 +141,5 @@ function System.Notify(Text, Duration)
         Debris:AddItem(clonedNotification, .5)
     end)
 end
+
+return System
