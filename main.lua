@@ -2,7 +2,7 @@ if game.CoreGui:FindFirstChild("NotificationUI") then
     game.CoreGui:FindFirstChild("NotificationUI"):Destroy()
 end
 
-	local NotificationUI = Instance.new("ScreenGui")
+local NotificationUI = Instance.new("ScreenGui")
 local NotificationFrame = Instance.new("Frame")
 local Notification = Instance.new("Frame")
 local Rounder = Instance.new("UICorner")
