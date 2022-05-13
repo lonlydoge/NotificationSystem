@@ -88,7 +88,7 @@ NotificationPositioner.Padding = UDim.new(0, 5)
 
 local System = {}
 
-function System.Notify(Text, Duration)
+function System.Notify(Text, Duration, Image)
     local transparencyData = {
         ["NotificationText"] = "TextTransparency",
         ["Image"] = "BackgroundTransparency",
@@ -96,6 +96,9 @@ function System.Notify(Text, Duration)
     }
     local clonedNotification = Notification:Clone()
     
+    if Image then
+        clonedNotification.Image.InfoImage.Image = Image 
+    end
 
     clonedNotification.Parent = NotificationFrame
     
