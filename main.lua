@@ -16,7 +16,7 @@ local System = {}
 local TransparencyValues = {
     ["UIStroke"] = "Transparency",
     ["Accept"] = "TextTransparency",
-    ["TextLabel"] = "TextTransparency",
+    ["Description"] = "TextTransparency",
     ["Title"] = "TextTransparency",
     ["Icon"] = "ImageTransparency",
 }
@@ -52,7 +52,7 @@ System.Notify = function(Title, Text, Duration)
     ClonedNotification.Parent = UI.NotificationFrame;
 
     ClonedNotification.Title.Text = Title;
-    ClonedNotification.TextLabel.Text = Text;
+    ClonedNotification.Description.Text = Text;
 
     local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.5), {
         BackgroundTransparency = 0;
@@ -102,7 +102,7 @@ System.BooleanNotify = function(Title, Text, Duration)
     ClonedNotification.Parent = UI.NotificationFrame;
 
     ClonedNotification.Title.Text = Title;
-    ClonedNotification.TextLabel.Text = Text;
+    ClonedNotification.Description.Text = Text;
 
     local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.5), {
         BackgroundTransparency = 0;
