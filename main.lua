@@ -16,6 +16,7 @@ local System = {}
 local TransparencyValues = {
     ["Description"] = "TextTransparency",
     ["Title"] = "TextTransparency",
+    ["Shadow"] = "ImageTransparency",
 }
 
 local LocalStorage = Instance.new("Folder", ReplicatedStorage);
