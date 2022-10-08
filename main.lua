@@ -22,7 +22,7 @@ local TransparencyValues = {
 local LocalStorage = Instance.new("Folder", ReplicatedStorage);
 LocalStorage.Name = "LocalStorage";
 
-local UI = InsertService:LoadLocalAsset("rbxassetid://9637478938"):Clone();
+local UI = InsertService:LoadLocalAsset("rbxassetid://11214434330"):Clone();
 
 local Notification = UI.NotificationFrame.Notification;
 
