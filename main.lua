@@ -44,7 +44,7 @@ System.Notify = function(Title, Text, Duration)
     ClonedNotification.Title.Text = Title;
     ClonedNotification.Description.Text = Text;
 
-    local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.25), {
+    local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.55, Enum.EasingStyle.Quint), {
         BackgroundTransparency = 0;
     });
 
@@ -52,7 +52,7 @@ System.Notify = function(Title, Text, Duration)
 
     for _, Object in pairs(ClonedNotification:GetDescendants()) do
         if TransparencyValues[Object.Name] then
-            local Tween = TweenService:Create(Object, TweenInfo.new(0.25), {
+            local Tween = TweenService:Create(Object, TweenInfo.new(0.55, Enum.EasingStyle.Quint), {
                 [TransparencyValues[Object.Name]] = 0;
             });
         
@@ -61,7 +61,7 @@ System.Notify = function(Title, Text, Duration)
     end
 
     task.delay(Duration, function()
-        local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.25), {
+        local FrameTween = TweenService:Create(ClonedNotification, TweenInfo.new(0.55, Enum.EasingStyle.Quint), {
             BackgroundTransparency = 1;
         });
 
@@ -69,7 +69,7 @@ System.Notify = function(Title, Text, Duration)
 
         for _, Object in pairs(ClonedNotification:GetDescendants()) do
             if TransparencyValues[Object.Name] then
-                local Tween = TweenService:Create(Object, TweenInfo.new(0.25), {
+                local Tween = TweenService:Create(Object, TweenInfo.new(0.55, Enum.EasingStyle.Quint), {
                     [TransparencyValues[Object.Name]] = 1;
                 });
             
